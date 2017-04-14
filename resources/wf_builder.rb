@@ -71,7 +71,9 @@ action :create do
     end
   end
 
-  execute 'cat /etc/chef/trusted_certs/*.crt >> /opt/chefdk/embedded/ssl/certs/cacert.pem'
+  execute 'cat /etc/chef/trusted_certs/*.crt >> /opt/chefdk/embedded/ssl/certs/cacert.pem' do
+    ignore_failure true
+  end
 
   ohai 'reload_passwd' do
     action :nothing
